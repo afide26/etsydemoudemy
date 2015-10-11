@@ -1,28 +1,25 @@
 <%= provide(:title, "All Listings")%>
 <%= render "layouts/flash" %>
-<h1>All Listings</h1>
-<% @listings.each do |listing| %>
-<div class="container">
-	<div class="row pull-right">
-		<div class="col-md-12">
-			<%= link_to "New Listing", new_listing_path, class:"btn btn-success" %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<h2>
-				<%= listing.name %>	
-			</h2>
-			<h3>
-				<%= number_to_currency(listing.price) %>
-			</h3>
-			<p>
-				<%= link_to "Show", listing_path(listing) %> |
-				<%= link_to "Edit", edit_listing_path(listing) %> |
-				<%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm:"Are you sure?"} %>
-			</p>
-
+<h1>All Listings<span class="pull-right"><%= link_to "New Listing", new_listing_path, class:"btn btn-sm btn-success" %></span></h1>
+<div class="center">
+	<div class="container">
+		<div class="row">
+		<% @listings.each do |listing| %>
+		  <div class="col-md-3">
+		    <div class="thumbnail">
+		      <%= link_to image_tag(listing.image.url), listing %>
+		      <div class="caption">
+		        <h3><%= listing.name %></h3>
+		        <h4><%= number_to_currency(listing.price) %></h4>
+				<p>
+					<%= link_to "Show", listing_path(listing) %> |
+					<%= link_to "Edit", edit_listing_path(listing) %> |
+					<%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm:"Are you sure?"} %>
+				</p>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
 		</div>
 	</div>
 </div>
-<% end %>
