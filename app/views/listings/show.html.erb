@@ -1,0 +1,18 @@
+<%= provide(:title, "#{@listing.name}")%>
+<%= render "layouts/flash" %>
+<h1>
+	<%= @listing.name %>
+</h1>
+<p>
+	<%= @listing.description %>
+</p>
+
+<p>
+	<%= number_to_currency(@listing.price) %>
+</p>
+
+<p>
+<%= link_to "Edit", edit_listing_path(@listing) %> | <%= link_to "Back To Listings", listings_path %>
+</p>
+
+
