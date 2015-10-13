@@ -13,6 +13,7 @@ gem 'turbolinks',   '2.3.0'
 gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
 gem "paperclip", "~> 4.3"
+gem "paperclip-dropbox", ">= 1.1.7"
 
  
 
