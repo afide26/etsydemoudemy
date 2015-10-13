@@ -18,3 +18,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#Ignore files loaded in local host
+/public/system
