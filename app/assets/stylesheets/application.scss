@@ -22,9 +22,11 @@ body{
 	color: #333333 !important;
 	font-family: Arial, Helvetica, sans-serif;
 }
-ul {
+.error_explanation>ul {
 	list-style-type: none !important;
 }
+
+
 
 
 .navbar-inverse{
@@ -56,6 +58,7 @@ ul {
 	text-align: center;
 	padding-top: .5em;
 	border-top: 1px solid black;
+	margin-top: 200px !important;
 }
 
 
