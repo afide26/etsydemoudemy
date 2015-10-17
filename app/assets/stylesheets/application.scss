@@ -31,7 +31,17 @@ body{
 }
 
 
+.table th{
+	font-size:1.2em;
+	font-weight:400;
+	background-color: #5bc0de;
+	color:white;
+}
 
+.table td{
+	vertical-align:middle !important;
+	font-size: 1.15em !important;
+}
 
 .navbar-inverse{
 	background-color: #EFEFEB !important;

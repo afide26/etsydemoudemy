@@ -2,7 +2,7 @@
 
 <div class="container">
 <%= render "layouts/flash" %>
-<h1>All Listings<span class="pull-right"><%= link_to "New Listing", new_listing_path, class:"btn btn-sm btn-success" %></span></h1>
+<h2>All Listings<span class="pull-right"><%= link_to "New Listing", new_listing_path, class:"btn btn-sm btn-success" %></span></h2>
 	<div class="center">
 		<div class="row">
 			<% @listings.each do |listing| %>

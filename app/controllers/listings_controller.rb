@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
 
   def seller
     @listings = Listing.where(:user => current_user).order("created_at DESC")
+    @user = current_user
   end
 
 

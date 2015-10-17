@@ -1,28 +1,41 @@
-<%= provide(:title, "All Listings")%>
+<%= provide(:title, "Dashboard")%>
 
 <div class="container">
 <%= render "layouts/flash" %>
-<h1>All Listings<span class="pull-right"><%= link_to "New Listing", new_listing_path, class:"btn btn-sm btn-success" %></span></h1>
-	<div class="center">
-		<div class="row">
+<h2><%= "#{@user.name}'s Dashboard" %><span class="pull-right"><%= link_to "Add New Listing", new_listing_path, class:"btn btn-sm btn-info" %></span></h2>
+	
+	<table class="table table-hover table-condensed table-bordered table-responsive">
+		<tbody>
+			<tr>
+				<th class ="center">Image</th>
+				<th class ="center">Item Name</th>
+				<th class ="center">Description</th>
+				<th class ="center">Price</th>
+				<th class ="center">Sold By</th>
+				<th class ="center">Actions</th>
+			</tr>
 			<% @listings.each do |listing| %>
-			  <div class="col-md-3">
-			    <div class="thumbnail">
-			      <%= link_to image_tag(listing.image.url), listing %>
-			      <div class="caption">
-			        <h3><%= listing.name %></h3>
-			        <h4><%= number_to_currency(listing.price) %></h4>
-			        <p><%= "Sold by #{listing.user.name}" %></p>
-					<p>
-						<% if (user_signed_in?) && (current_user == listing.user)%>
-							<%= link_to "Edit", edit_listing_path(listing), class:"btn btn-link" %> 
-							<%= link_to "Delete", listing_path(listing), class:"btn btn-link", method: :delete, data: {confirm:"Are you sure?"} %>
-						<% end %>
-					</p>
-			      </div>
-			    </div>
-			  </div>
+			<tr class="center">
+				<td><%= link_to image_tag(listing.image.url(:thumb), class:"img img-rounded"), listing %></td>
+				<td><%= listing.name %></td>
+				<td><%= truncate(listing.description, length: 40) %></td>
+				<td><%= number_to_currency(listing.price)%></td>
+				<td><%= listing.user.name %></td>
+				<td>
+					<!-- Split button -->
+					<div class="btn-group btn-sm">
+					  <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Actions <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+					    <li><%= link_to "Show", listing_path(listing), class:"btn btn-link" %> </li>
+					    <li><%= link_to "Edit", edit_listing_path(listing), class:"btn btn-link" %> </li>
+					    <li><%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm:"Are you sure?"}, class:"btn btn-link" %></li>
+					  </ul>
+					</div>
+				</td>
+			</tr>
 			<% end %>
-		</div>
-	</div>
+		</tbody>
+	</table>
 </div>
