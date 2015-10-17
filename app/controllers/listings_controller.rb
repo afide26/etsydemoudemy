@@ -1,10 +1,12 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
   def index
   	@listings = Listing.all
   end
 
   def show
-  	@listing = Listing.find(params[:id])
   end
 
   def new
@@ -23,11 +25,9 @@ class ListingsController < ApplicationController
   end
 
   def edit
-  	@listing = Listing.find(params[:id])
   end
 
   def update
-  	@listing = Listing.find(params[:id])
   	if @listing.update(listing_params)
   		redirect_to @listing
   		flash[:notice] = "#{@listing.name} has been updated."
@@ -37,7 +37,6 @@ class ListingsController < ApplicationController
   end
 
   	def destroy
-  		@listing = Listing.find(params[:id])
   		@listing.destroy
   		flash[:danger] = "#{@listing.name} has been deleted from the database."
   		redirect_to listings_path
@@ -48,4 +47,19 @@ class ListingsController < ApplicationController
   		def listing_params
   			params.require(:listing).permit(:name, :description, :price, :image, )
   		end
+
+      def set_listing
+        @listing = Listing.find(params[:id])
+      end
+
+      def check_user
+        if current_user != @listing.user
+          redirect_to  root_url
+          flash[:danger] ="Sorry this listing belongs to someone else."
+        end
+      end
 end
+
+
+
+

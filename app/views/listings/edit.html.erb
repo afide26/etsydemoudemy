@@ -1,5 +1,8 @@
 <%= provide(:title, "Edit #{@listing.name}")%>
+<div class="container">
+	<h1 style="margin-left:15px;">Edit Listing</h1>
+	<%= render "listings/form" %>
 
-<%= render "listings/form" %>
+	<p style="margin-left:15px;"><%= link_to "Back to Listings", listings_path %></p>
+</div>
 
-<%= link_to "Back to Listings", listings_path %>

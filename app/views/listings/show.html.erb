@@ -13,5 +13,8 @@
 	</div>
 </div>
 <p>
-<%= link_to "Edit", edit_listing_path(@listing) %> | <%= link_to "Back To Listings", listings_path %>
+<% if current_user == @listing.user %>
+	<%= link_to "Edit", edit_listing_path(@listing) %> | 
+<% end %>
+<%= link_to "Back To Listings", listings_path %>
 </p>
