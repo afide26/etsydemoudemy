@@ -1,47 +1,48 @@
+<div class="container">
+	<%= form_for(@listing, html: { multipart: true }) do |f| %>
+	  <% if @listing.errors.any? %>
+	    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+	      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
 
-<%= form_for(@listing, html: { multipart: true }) do |f| %>
-  <% if @listing.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
+	      <ul style="list-style-type:circle">
+	      <% @listing.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+		<div class="container">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<%= f.label :name %>
+					<%= f.text_field :name, autofocus: true, class:"form-control" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+					<%= f.label :description %>
+					<%= f.text_area :description, class:"form-control", rows: 10 %>
+				 </div>
+			</div>
 
-      <ul style="list-style-type:circle">
-      <% @listing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-	<div class="container">
-		<div class="row">
-			<div class="form-group col-md-12">
-				<%= f.label :name %>
-				<%= f.text_field :name, autofocus: true, class:"form-control" %>
+			<div class="row">
+				<div class="form-group col-md-2">
+					<%= f.label :price %>
+					<%= f.number_field :price, class:"form-control" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+				<%= label_tag "Image Upload" %>
+				<%= f.file_field :image, class:"form-control" %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+				<%= f.submit class:"btn btn-info btn-block" %>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-				<%= f.label :description %>
-				<%= f.text_area :description, class:"form-control", rows: 10 %>
-			 </div>
-		</div>
-
-		<div class="row">
-			<div class="form-group col-md-2">
-				<%= f.label :price %>
-				<%= f.number_field :price, class:"form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-			<%= label_tag "Image Upload" %>
-			<%= f.file_field :image, class:"form-control" %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-md-12">
-			<%= f.submit class:"btn btn-info btn-block" %>
-			</div>
-		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>

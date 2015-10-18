@@ -26,6 +26,12 @@ body{
 	list-style-type: none !important;
 }
 
+.jumbotron{
+	margin-top: -10px;
+	background-size: cover;
+	background-image: url('http://lorempixel.com/output/abstract-q-c-1429-350-5.jpg');	
+	height: 350px !important;
+}
 .center, form{
 	margin-bottom: 3em !important;
 }
