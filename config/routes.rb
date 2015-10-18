@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   devise_for :users, path_names: {edit: 'profile'}
   resources :listings do
-  	resources :orders
+  	resources :orders, only: [:new, :create]
   end
   root "listings#index"
   get "about" => "pages#about"
