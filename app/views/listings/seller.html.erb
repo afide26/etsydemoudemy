@@ -2,7 +2,7 @@
 
 <div class="container">
 <%= render "layouts/flash" %>
-<h2><%= "#{@user.name}'s Dashboard" %><span class="pull-right"><%= link_to "Add New Listing", new_listing_path, class:"btn btn-sm btn-info" %></span></h2>
+<h2><%= "#{@user.name}'s Dashboard" %><span class="pull-right"><p><%= link_to "Add New Listing", new_listing_path, class:"btn btn-sm btn-info" %> | <%= link_to "Sales Dashboard", sales_path, class:"btn btn-sm btn-success" %></p></span></h2>
 	
 	<table class="table table-hover table-condensed table-bordered table-responsive">
 		<tbody>

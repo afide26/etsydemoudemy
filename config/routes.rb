@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact"
 
   get "seller" => "listings#seller"
+  get "sales" => "orders#sales"
+  get "purchases" => "orders#purchases"
 end

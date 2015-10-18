@@ -96,7 +96,10 @@ body{
 
 
 
-
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #EFEFEB !important;
+    color: #0194c2 !important;
+}
 
 
 

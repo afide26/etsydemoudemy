@@ -1,0 +1,29 @@
+
+<%= provide(:title, "Orders Dashboard")%>
+
+<div class="container">
+<%= render "layouts/flash" %>
+<h2><%= "#{current_user.name}'s Purchase History" %><span class="pull-right"><p><%= link_to "Back to Items", seller_path, class:"btn btn-sm btn-info" %> | <%= link_to "Add New Listing", new_listing_path, class:"btn btn-success btn-sm" %></p></span></h2>
+	
+	<table class="table table-hover table-condensed table-bordered table-responsive">
+		<tbody>
+			<tr>
+				<th class ="center">Image</th>
+				<th class ="center">Item</th>
+				<th class ="center">Price</th>
+				<th class ="center">Seller</th>
+				<th class ="center">Date Sold</th>
+			</tr>
+			<% @orders.each do |order| %>
+			<tr class="center">
+				<td><%= image_tag order.listing.image.url(:thumb), class:"img img-thumb" %></td>
+				<td><%= order.listing.name %></td>
+				<td><%= number_to_currency(order.listing.price)%></td>
+				<td><%= order.seller.name %></td>
+				<td><%= order.created_at.strftime("%B %d, %Y") %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
